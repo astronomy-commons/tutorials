@@ -7,7 +7,7 @@ class cluster():
     spark_session = None
         
     dirac_conf = {}
-    dirac_conf['spark.executors.instances'] = 2
+    dirac_conf['spark.executors.instances'] = 16
     
     def start(self):
         print("Starting SparkSession creation")
