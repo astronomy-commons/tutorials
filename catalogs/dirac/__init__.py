@@ -8,7 +8,7 @@ class DataBase():
     catalogs = None
     
     dirac_conf = {}
-    dirac_conf['spark.executors.instances'] = 16
+    dirac_conf['spark.executor.instances'] = 16
     
     dirac_catalogs = ["allwise", "gaiadr2", "sdss"]
     
