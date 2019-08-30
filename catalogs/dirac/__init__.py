@@ -2,67 +2,13 @@ from pyspark.sql import SparkSession
 import axs
 from axs import Constants
 
-class cluster():
-    spark_context = None
-    spark_session = None
-        
-    dirac_conf = {}
-    dirac_conf['spark.executors.instances'] = 16
-    
-    def start(self):
-        print("Starting SparkSession creation")
-        _spark_session = SparkSession.builder
-        for key, value in self.dirac_conf.items():
-            print(f"Setting config: {key}={value}")
-            _spark_session = _spark_session.config(str(key), str(value))
-        self.spark_session = _spark_session
-        self.spark_session = _spark_session.enableHiveSupport().getOrCreate()
-        self.spark_context = self.spark_session.sparkContext
-    
-    def stop(self):
-        if self.spark_session:
-            self.spark_session.stop()
-        else:
-            print("Spark cluster not created.")
-    
-#     def __new__(cls):
-#         cls.start()
-#         cluster = cls()
-#         cluster.start()
-#         return cluster
-    
-    def __init__(self):
-        self.start()
-        return None
-        
-    def load(self, table_name):
-        return None
-    
-    def get_spark_context(self):
-        if self.spark_context:
-            return self.spark_context
-        else:
-            print("Spark cluster not created.")
-            return None
-    
-    def get_spark_session(self):
-        if self.spark_session:
-            return self.spark_session
-        else:
-            print("Spark cluster not created.")
-            return None
-        
-def start_cluster():
-    return cluster()
-
-
 class DataBase():
     spark_context = None
     spark_session = None
     catalogs = None
     
     dirac_conf = {}
-    dirac_conf['spark.executors.instances'] = 2
+    dirac_conf['spark.executors.instances'] = 16
     
     dirac_catalogs = ["allwise", "gaiadr2", "sdss"]
     
@@ -136,9 +82,3 @@ class DataBase():
 def start():
     return DataBase()
 
-# class catalog():
-#     def __init__(self, catalog_name):
-#         return None
-
-# def load(catalog_name):
-#     return catalog()
